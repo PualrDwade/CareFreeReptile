@@ -9,7 +9,8 @@ class ProductSpider(scrapy.Spider):
     name = 'ProductSpider'
     # 各城市的产品页面链接
     product_dict = {
-        '韶山': 'http://vacations.ctrip.com/grouptravel-1B64/?searchValue=%e9%9f%b6%e5%b1%b1&searchText=%e9%9f%b6%e5%b1%b1&from=do',
+        '韶山': 'http://vacations.ctrip.com/grouptravel-1B64/?searchValue=%e9%9f%b6%e5%b1%b1&searchText=%e9%9f%b6%e5%b1'
+              '%b1&from=do',
         '三亚': 'http://vacations.ctrip.com/tours/d-sanya-61/grouptravel?from=do'
     }
     list_urls = {}
@@ -44,7 +45,8 @@ class ProductSpider(scrapy.Spider):
         item['product_name'] = response.xpath('/html/body/div[2]/div/div/div[1]/div/div[2]/div[1]/h1/text()').extract()
         # 产品的标识号
         if len(response.xpath('/html/body/div[2]/div/div/div[1]/div/div[2]/div[2]/div[1]/div[2]/text()')) > 1:
-            prd_num = response.xpath('/html/body/div[2]/div/div/div[1]/div/div[2]/div[2]/div[1]/div[2]/text()').extract_first().strip()
+            prd_num = response.xpath(
+                '/html/body/div[2]/div/div/div[1]/div/div[2]/div[2]/div[1]/div[2]/text()').extract_first().strip()
         else:
             prd_num = "none"
         item['id'] = self.id_dict["长沙"] + prd_num
@@ -54,12 +56,6 @@ class ProductSpider(scrapy.Spider):
 
         # 产品类型
         item['sr_team'] = re.findall("晚....", item['product_name'][0])[0][1:-1]  # [1:-1]是对去除晚和(
-
-        # 供应商
-        # if (len(response.xpath('/html/body/div[2]/div/div/div[1]/div/div[2]/div[1]/div[4]/dl[2]/dd/text()').extract()) > 0):
-        #     item['supplier'] = response.xpath('/html/body/div[2]/div/div/div[1]/div/div[2]/div[1]/div[4]/dl[2]/dd/text()').extract()
-        # else:
-        #     item['supplier'] = response.xpath('/html/body/div[2]/div/div/div[1]/div/div[2]/div[1]/div[3]/dl[2]/dd/span/text()').extract()
 
         # 这里有反爬虫机制
         # score_s = response.xpath('//span[@class="score_s"]/em/text()').extract()   根本就没有span[@class="score_s"]这个东西!!!!
