@@ -3,7 +3,7 @@ import scrapy
 
 
 # 携程的酒店信息字段
-class Ctrip_HotelMsgItem(scrapy.Item):
+class HotelMsgItem(scrapy.Item):
     # 酒店id
     id = scrapy.Field()
     # 酒店名字
@@ -28,34 +28,7 @@ class Ctrip_HotelMsgItem(scrapy.Item):
     sell_num = scrapy.Field()
 
 
-# 美团的酒店信息字段
-class Meituan_HotelMsgItem(scrapy.Item):
-    # 在此定义数据库字段
-    # 酒店id
-    id = scrapy.Field()
-    # 酒店名字
-    name = scrapy.Field()
-    # 酒店评分
-    score = scrapy.Field()
-    # 酒店价格(起价)
-    hotel_price = scrapy.Field()
-    # 酒店简介(包括位置)
-    hotel_content = scrapy.Field()
-    # 图片url(可以为空)
-    img_url = scrapy.Field()
-    # 酒店链接(必须要有,直接跳转到对应商家的链接上去)
-    hotel_link = scrapy.Field()
-    # 所属景点(可以为空)
-    scenic_id = scrapy.Field()
-    # 供应商(可以为空,具体看爬取的是哪个网站)
-    supplier_id = scrapy.Field()
-    # 最近动态
-    latest_time = scrapy.Field()
-    # 人气
-    sell_num = scrapy.Field()
-
-
-class Ctrip_TicketItem(scrapy.Item):
+class TicketItem(scrapy.Item):
     id = scrapy.Field()  # 门票ID
     name = scrapy.Field()  # 所属景点名称
     ticket_url = scrapy.Field()  # 门票具体地址URL

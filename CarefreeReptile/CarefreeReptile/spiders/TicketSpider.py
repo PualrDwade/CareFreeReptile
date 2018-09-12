@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import scrapy
-from ..items import Ctrip_TicketItem
+from ..items import TicketItem
 
 
 class TicketSpider(scrapy.Spider):
@@ -10,9 +10,11 @@ class TicketSpider(scrapy.Spider):
     count = 0
 
     def parse(self, response):
+        next_url = None  # 首先声明全局变量
         trs = response.xpath("//div[@id='searchResultContainer']//div[@class='searchresult_product04']")
         for tr in trs:
             self.count += 1
+            # 这里id指定为湖南
             id = "CN00001_Ticket_" + str(self.count)
             name = tr.xpath(".//div[1]//h2/a/text()").get().strip()
             ticket_url = tr.xpath(".//div[1]/a/@href").get()
@@ -27,7 +29,7 @@ class TicketSpider(scrapy.Spider):
             price = str(price)
             supplier = '00003'
 
-            item = Ctrip_TicketItem(
+            item = TicketItem(
                 id=id,
                 name=name,
                 ticket_url=ticket_url,

@@ -25,7 +25,7 @@ class TicketSpiderPipeline(object):
     def process_item(self, item, spider):
         try:
             self.cursor.execute(
-                """insert into ProductDT_ticketsmsg(id,ticket_content,ticket_price,ticket_link,scenic_id,supplier_id_id,
+                """insert into ProductDT_ticketsmsg(id,ticket_content,ticket_price,ticket_link,scenic_name,supplier_id_id,
 scense_address,city_id,img_url,score)
                 values (%s,%s,%s,%s,%s,%s,%s, %s, %s, %s)""",
                 (item['id'],
