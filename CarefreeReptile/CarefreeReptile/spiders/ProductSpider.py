@@ -2,14 +2,17 @@
 import re
 
 import scrapy
-from ..items import Ctrip_productItem
+from ..items import Ctrip_productItem, Ctrip_product_scenic_Item, Ctrip_product_fromcity_price_Item
 
+import time
+import random
 
 class ProductSpider(scrapy.Spider):
     name = 'ProductSpider'
     # 各城市的产品页面链接
     product_dict = {
-        '韶山': 'http://vacations.ctrip.com/grouptravel-1B64/?searchValue=%e9%9f%b6%e5%b1%b1&searchText=%e9%9f%b6%e5%b1%b1&from=do',
+        '韶山': 'http://vacations.ctrip.com/grouptravel-1B64/?searchValue=%e9%9f%b6%e5%b1%b1&searchText=%e9%9f%b6%e5%b1'
+              '%b1&from=do',
         '三亚': 'http://vacations.ctrip.com/tours/d-sanya-61/grouptravel?from=do'
     }
     list_urls = {}
@@ -35,6 +38,8 @@ class ProductSpider(scrapy.Spider):
     # 爬携程
     def product_parse(self, response):
         item = Ctrip_productItem()
+        item1 = Ctrip_product_scenic_Item()
+        item2 = Ctrip_product_fromcity_price_Item()
 
         item['prd_url'] = self.list_urls[response.meta['num']]
         item['prd_img'] = "http:" + response.xpath(
@@ -44,7 +49,7 @@ class ProductSpider(scrapy.Spider):
         item['product_name'] = response.xpath('/html/body/div[2]/div/div/div[1]/div/div[2]/div[1]/h1/text()').extract()
         # 产品的标识号
         if len(response.xpath('/html/body/div[2]/div/div/div[1]/div/div[2]/div[2]/div[1]/div[2]/text()')) > 1:
-            prd_num = response.xpath('/html/body/div[2]/div/div/div[1]/div/div[2]/div[2]/div[1]/div[2]/text()').extract_first().strip()
+            prd_num = response.xpath('/html/body/div[2]/div/div/div[1]/div/div[2]/div[2]/div[1]/div[2]/text()').extract()[1]
         else:
             prd_num = "none"
         item['id'] = self.id_dict["长沙"] + prd_num
@@ -54,12 +59,6 @@ class ProductSpider(scrapy.Spider):
 
         # 产品类型
         item['sr_team'] = re.findall("晚....", item['product_name'][0])[0][1:-1]  # [1:-1]是对去除晚和(
-
-        # 供应商
-        # if (len(response.xpath('/html/body/div[2]/div/div/div[1]/div/div[2]/div[1]/div[4]/dl[2]/dd/text()').extract()) > 0):
-        #     item['supplier'] = response.xpath('/html/body/div[2]/div/div/div[1]/div/div[2]/div[1]/div[4]/dl[2]/dd/text()').extract()
-        # else:
-        #     item['supplier'] = response.xpath('/html/body/div[2]/div/div/div[1]/div/div[2]/div[1]/div[3]/dl[2]/dd/span/text()').extract()
 
         # 这里有反爬虫机制
         # score_s = response.xpath('//span[@class="score_s"]/em/text()').extract()   根本就没有span[@class="score_s"]这个东西!!!!
@@ -81,9 +80,16 @@ class ProductSpider(scrapy.Spider):
             item['product_grade'] = response.xpath('//h1/span/@class').extract()[0][-1]
         else:
             item['product_grade'] = "0"
+        
+        yield item
+        #######################################################################################
+        # 产品景点
+        item1['id'] = item['id']
+        item1['scenic_name'] = "韶山"
+        yield item1
 
-        list1 = []
-        list2 = []
+        #######################################################################################
+        # 产品、出发城市、起价
         if len(response.xpath('//div[@class="from_city"]/text()').extract()) > 1:
             the_city = response.xpath('//div[@class="from_city"]/text()').extract()[1]  # 当前页面出发城市
         else:
@@ -92,8 +98,11 @@ class ProductSpider(scrapy.Spider):
             the_price = response.xpath('//span[@class="total_price"]/em/text()').extract()[0]  # 当前页面出发城市起价
         else:
             the_price = response.xpath('//span[@class="total_price"]/em/text()').extract()
-        list1.append(the_city)
-        list2.append(the_price)
+        item2['ID'] = int(time.time()) + int(random.randint(1000,9999))
+        item2['id'] = item['id']
+        item2['city_id'] = the_city
+        item2['product_price'] = the_price
+        yield item2
 
         from_city = response.xpath('//div[@class="city_price"]').re(r'<em>.*?</em>.*?</div>')
         for city in from_city:
@@ -104,11 +113,10 @@ class ProductSpider(scrapy.Spider):
                 price = re.findall(res_price_pattern, city, re.S | re.M)[0]
             else:
                 price = "实时计价"
-            list1.append(from_city_name)
-            list2.append(price)
-        item["departs_citys"] = list1
-        item["price"] = list2
-
-        yield item
+            item2['ID'] = int(time.time()) + int(random.randint(1000,9999))
+            item2['id'] = item['id']
+            item2['city_id'] = from_city_name
+            item2['product_price'] = price
+            yield item2
 
         print("-----------------------------------------------------------------------")

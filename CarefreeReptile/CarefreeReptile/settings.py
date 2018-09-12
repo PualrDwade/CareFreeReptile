@@ -38,7 +38,7 @@ ROBOTSTXT_OBEY = True
 # CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
-COOKIES_ENABLED = False
+# COOKIES_ENABLED = False
 
 # Disable Telnet Console (enabled by default)
 # TELNETCONSOLE_ENABLED = False
@@ -70,7 +70,9 @@ COOKIES_ENABLED = False
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'CarefreeReptile.pipelines.ProductSpiderPipeline': 400,
+    'CarefreeReptile.pipelines.Ctrip_productItemPipeline': 400,
+    'CarefreeReptile.pipelines.Ctrip_product_scenic_Item_Pipeline': 399,
+    'CarefreeReptile.pipelines.Ctrip_product_fromcity_price_Item_Pipeline': 398,
     'CarefreeReptile.pipelines.TicketSpiderPipeline': 300,
     'CarefreeReptile.pipelines.HotelSpiderPipeline': 200,
 }
@@ -79,9 +81,9 @@ ITEM_PIPELINES = {
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
 # AUTOTHROTTLE_ENABLED = True
 # The initial download delay
-AUTOTHROTTLE_START_DELAY = 5
+# AUTOTHROTTLE_START_DELAY = 5
 # The maximum download delay to be set in case of high latencies
-AUTOTHROTTLE_MAX_DELAY = 60
+# AUTOTHROTTLE_MAX_DELAY = 60
 # The average number of requests Scrapy should be sending in parallel to
 # each remote server
 # AUTOTHROTTLE_TARGET_CONCURRENCY = 1.0

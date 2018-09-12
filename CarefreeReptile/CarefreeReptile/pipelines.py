@@ -27,8 +27,7 @@ class TicketSpiderPipeline(object):
     def process_item(self, item, spider):
         try:
             self.cursor.execute(
-                """insert into ProductDT_ticketsmsg(id,ticket_content,ticket_price,ticket_link,scenic_id,supplier_id_id,
-scense_address,city_id,img_url,score)
+                """insert into ProductDT_ticketsmsg(id,ticket_content,ticket_price,ticket_link,scenic_name,supplier_id_id,scense_address,city_id,img_url,score)
                 values (%s,%s,%s,%s,%s,%s,%s, %s, %s, %s)""",
                 (item['id'],
                  item['description'],
@@ -69,8 +68,7 @@ class HotelSpiderPipeline(object):
     def process_item(self, item, spider):
         try:
             self.cursor.execute(
-                """insert into ProductDT_hotelmsg(id, name, score, hotel_price ,
-hotel_content,img_url,hotel_link,scenic_id,supplier_id_id,latest_time,sell_num)
+                """insert into ProductDT_hotelmsg(id, name, score, hotel_price ,hotel_content,img_url,hotel_link,scenic_id,supplier_id_id,latest_time,sell_num)
                 values (%s,%s,%s,%s,%s,%s,%s, %s, %s, %s, %s)""",
                 (item['id'],
                  item['name'],
@@ -94,7 +92,7 @@ hotel_content,img_url,hotel_link,scenic_id,supplier_id_id,latest_time,sell_num)
 
 
 # 产品信息爬取的数据库模块
-class ProductSpiderPipeline(object):
+class Ctrip_productItemPipeline(object):
     def __init__(self):
         # 链接数据库
         self.connect = pymysql.connect(
@@ -112,24 +110,87 @@ class ProductSpiderPipeline(object):
     def process_item(self, item, spider):
         try:
             self.cursor.execute(
-                """insert into ProductDT_productmsg(id, name, product_price, product_link ,
-sell_num,supplier_id,score,product_type,start_city,traver_days,comments_num,img_url,product_grade,scenic_name)
-                values (%s,%s,%s,%s,%s,%s,%s, %s, %s, %s, %s, %s, %s, %s)""",
+                """insert into ProductDT_productmsg(id, name, product_link ,sell_num,supplier_id,score,product_type,traver_days,comments_num,img_url,product_grade)
+                values (%s,%s,%s,%s,%s,%s,%s, %s, %s, %s, %s)""",
                 (item['id'],
                  item['name'],
-                 item['product_price'],
                  item['product_link'],
                  item['sell_num'],
                  item['supplier_id'],
                  item['score'],
                  item['product_type'],
-                 item['start_city'],
                  item['traver_days'],
                  item['comments_num'],
                  item['img_url'],
                  item['product_grade'],
-                 item['scenic_name']
                  )
+            )
+            # 插入完成提交sql语句
+            self.connect.commit()
+        except Exception as error:
+            # 出现错误时打印错误消息
+            print(error)
+        return item
+
+
+# 产品景点
+class Ctrip_product_scenic_Item_Pipeline():
+    def __init__(self):
+        # 链接数据库
+        self.connect = pymysql.connect(
+            host=settings.MYSQL_HOST,
+            db=settings.MYSQL_DBNAME,
+            user=settings.MYSQL_USER,
+            passwd=settings.MYSQL_PASSWD,
+            charset='utf8',
+            use_unicode=True)
+        # 然后通过cursor执行增删查改
+        self.cursor = self.connect.cursor()
+        print('connect success')
+
+    def process_item(self, item, spider):
+        try:
+            self.cursor.execute(
+                """insert into ProductDT_product_city(id, scenic_name)
+                values (%s,%s) """,
+                (item['id'],
+                 item['scenic_name'],
+                )
+            )
+            # 插入完成提交sql语句
+            self.connect.commit()
+        except Exception as error:
+            # 出现错误时打印错误消息
+            print(error)
+        return item
+
+
+
+# 产品、出发城市、起价
+class Ctrip_product_fromcity_price_Item_Pipeline():
+    def __init__(self):
+        # 链接数据库
+        self.connect = pymysql.connect(
+            host=settings.MYSQL_HOST,
+            db=settings.MYSQL_DBNAME,
+            user=settings.MYSQL_USER,
+            passwd=settings.MYSQL_PASSWD,
+            charset='utf8',
+            use_unicode=True)
+        # 然后通过cursor执行增删查改
+        self.cursor = self.connect.cursor()
+        print('connect success')
+
+    def process_item(self, item, spider):
+        try:
+            self.cursor.execute(
+                """insert into ProductDT_product_city(ID, id, city_id, product_price)
+                values (%s,%s,%s,%s) """,
+                (item['ID'],
+                 item['id'],
+                 item['city_id'],
+                 item['product_price'],
+                )
             )
             # 插入完成提交sql语句
             self.connect.commit()
