@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="carefree@120.79.206.32" uuid="80c8f31e-004f-4a2c-9e1c-7e6e2e6c4e33">
+    <data-source name="carefree@120.79.206.32" uuid="df0b24e2-9a3b-4dcf-813a-ccb68b7ba8b8">
       <database-info product="MySQL" version="5.7.22" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.46 ( Revision: 9cc87a48e75c2d2e87c1a293b2862ce651cb256e )">
         <extra-name-characters>#@</extra-name-characters>
         <identifier-quote-string>`</identifier-quote-string>
