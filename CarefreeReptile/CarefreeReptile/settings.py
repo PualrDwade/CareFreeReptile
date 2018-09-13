@@ -24,7 +24,7 @@ MYSQL_PASSWD = 'chen981030'
 # USER_AGENT = 'CarefreeReptile (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 # CONCURRENT_REQUESTS = 32
@@ -73,6 +73,7 @@ ITEM_PIPELINES = {
     'CarefreeReptile.pipelines.ProductSpiderPipeline': 400,
     'CarefreeReptile.pipelines.TicketSpiderPipeline': 300,
     'CarefreeReptile.pipelines.HotelSpiderPipeline': 200,
+    'CarefreeReptile.pipelines.StrategyPipeline': 100
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

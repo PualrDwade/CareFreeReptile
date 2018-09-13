@@ -2,7 +2,7 @@
 import scrapy
 
 
-# 携程的酒店信息字段
+# 酒店信息字段
 class HotelMsgItem(scrapy.Item):
     # 酒店id
     id = scrapy.Field()
@@ -26,7 +26,6 @@ class HotelMsgItem(scrapy.Item):
     latest_time = scrapy.Field()
     # 人气
     sell_num = scrapy.Field()
-
 
 
 class TicketItem(scrapy.Item):
@@ -58,3 +57,14 @@ class Ctrip_productItem(scrapy.Item):
     prd_url = scrapy.Field()  # 产品链接
     prd_img = scrapy.Field()  # 产品图片
     prd_scenic = scrapy.Field()  # 产品景点
+
+
+# 马蜂窝的攻略链接字段
+class StrategyMsgItem(scrapy.Item):
+    id = scrapy.Field()
+    title = scrapy.Field()
+    link_url = scrapy.Field()
+    simple_content = scrapy.Field()
+    img_url = scrapy.Field()
+    supplier = scrapy.Field()
+    scenic_name = scrapy.Field()

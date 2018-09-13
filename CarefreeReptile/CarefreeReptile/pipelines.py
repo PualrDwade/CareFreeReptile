@@ -2,8 +2,6 @@
 
 import pymysql
 from . import settings
-import codecs
-import json
 
 
 # 门票信息爬取的数据库模块
@@ -129,6 +127,47 @@ sell_num,supplier_id,score,product_type,start_city,traver_days,comments_num,img_
                  item['img_url'],
                  item['product_grade'],
                  item['scenic_name']
+                 )
+            )
+            # 插入完成提交sql语句
+            self.connect.commit()
+        except Exception as error:
+            # 出现错误时打印错误消息
+            print(error)
+        return item
+
+
+# 攻略信息爬取的数据库模块
+class StrategyPipeline(object):
+    """docstring for TicketsSpiderPipeline"""
+
+    def __init__(self):
+        # 链接数据库
+        self.connect = pymysql.connect(
+            host=settings.MYSQL_HOST,
+            db=settings.MYSQL_DBNAME,
+            user=settings.MYSQL_USER,
+            passwd=settings.MYSQL_PASSWD,
+            charset='utf8',
+            use_unicode=True)
+        # 然后通过cursor执行增删查改
+        self.cursor = self.connect.cursor()
+        print('connect success')
+
+    # 定义处理函数
+    def process_item(self, item, spider):
+        try:
+            self.cursor.execute(
+                """insert into ProductDT_strategymsg(id,title,link_url,
+simple_content,img_url,supplier_id_id,scenic_name)
+                values (%s,%s,%s,%s,%s,%s,%s)""",
+                (item['id'],
+                 item['title'],
+                 item['link_url'],
+                 item['simple_content'],
+                 item['img_url'],
+                 item['supplier'],
+                 item['scenic_name'],
                  )
             )
             # 插入完成提交sql语句

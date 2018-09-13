@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="carefree@120.79.206.32" uuid="df0b24e2-9a3b-4dcf-813a-ccb68b7ba8b8">
+    <data-source source="LOCAL" name="@120.79.206.32" uuid="0a5e0f49-aaa8-4767-bab6-fee2fa70d49c">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
+      <configured-by-url>true</configured-by-url>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://120.79.206.32:3306/carefree</jdbc-url>
+      <jdbc-url>jdbc:mysql://120.79.206.32:3306</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />
