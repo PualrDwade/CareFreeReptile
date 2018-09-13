@@ -34,24 +34,35 @@ class HotelSpider2(scrapy.Spider):
             meta = {
                 'hotel_id': self.hotel_id_dict[url]
             }
-            yield scrapy.Request(url=url, callback=self.parse, meta=meta)  # 提交给parse处理
+            # 提交给parse处理
+            yield scrapy.Request(url=url, callback=self.parse, meta=meta)
 
     def parse(self, response):
-        hotelpages = response.xpath('/html/body/main/section/div/div[1]/div[1]/div[2]/div[1]/article')
+        hotelpages = response.xpath(
+            '/html/body/main/section/div/div[1]/div[1]/div[2]/div[1]/article')
         for hotelpage in hotelpages:
             # 创建一个item用来存储数据
             hotelitem = HotelMsgItem()
             self.count += 1
             hotelitem['id'] = response.meta['hotel_id'] + str(self.count)
-            hotelitem['name'] = hotelpage.xpath('div[2]/h3/a/text()').extract_first().strip()
-            hotelitem['score'] = hotelpage.xpath('div[2]/div/div[2]/div[1]/text()').extract_first().strip()
-            hotelitem['hotel_price'] = hotelpage.xpath('div[2]/div/div[3]/div[1]/em/text()').extract_first().strip()
-            hotelitem['hotel_content'] = hotelpage.xpath('div[2]/div/div[1]/div[1]/text()').extract_first().strip()
-            hotelitem['img_url'] = hotelpage.xpath('div[1]/a/img/@src').extract_first().strip()
-            hotelitem['hotel_link'] = hotelpage.xpath('div[2]/div/div[3]/a/@href').extract_first().strip()
-            hotelitem['scenic_id'] = hotelpage.xpath('div[2]/div/div[1]/div[1]/span/text()').extract_first()
+            hotelitem['name'] = hotelpage.xpath(
+                'div[2]/h3/a/text()').extract_first().strip()
+            hotelitem['score'] = hotelpage.xpath(
+                'div[2]/div/div[2]/div[1]/text()').extract_first().strip()
+            hotelitem['hotel_price'] = hotelpage.xpath(
+                'div[2]/div/div[3]/div[1]/em/text()').extract_first().strip()
+            hotelitem['hotel_content'] = hotelpage.xpath(
+                'div[2]/div/div[1]/div[1]/text()').extract_first().strip()
+            hotelitem['img_url'] = hotelpage.xpath(
+                'div[1]/a/img/@src').extract_first().strip()
+            hotelitem['hotel_link'] = hotelpage.xpath(
+                'div[2]/div/div[3]/a/@href').extract_first().strip()
+            hotelitem['scenic_id'] = hotelpage.xpath(
+                'div[2]/div/div[1]/div[1]/span/text()').extract_first()
             hotelitem['supplier_id'] = '00001'  # 美团
-            hotelitem['latest_time'] = hotelpage.xpath('div[2]/div/div[3]/div[2]/text()').extract_first()
-            hotelitem['sell_num'] = hotelpage.xpath('div[2]/div/div[2]/div[2]/text()').extract_first().strip()
+            hotelitem['latest_time'] = hotelpage.xpath(
+                'div[2]/div/div[3]/div[2]/text()').extract_first()
+            hotelitem['sell_num'] = hotelpage.xpath(
+                'div[2]/div/div[2]/div[2]/text()').extract_first().strip()
             # 存入数据库
             yield hotelitem

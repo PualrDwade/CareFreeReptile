@@ -49,11 +49,13 @@ class ProductSpider(scrapy.Spider):
             '/html/body/div[2]/div/div/div[1]/div/div[2]/div[1]/div[3]/div/div[1]'
             '/a/div/div/div[2]/img/@src').extract_first()).strip()
         # 产品名称
-        item['product_name'] = response.xpath('/html/body/div[2]/div/div/div[1]/div/div[2]/div[1]/h1/text()').extract()
+        item['product_name'] = response.xpath(
+            '/html/body/div[2]/div/div/div[1]/div/div[2]/div[1]/h1/text()').extract()
         # 产品的标识号
         if len(response.xpath('/html/body/div[2]/div/div/div[1]/div/div[2]/div[2]/div[1]/div[2]/text()')) > 1:
             prd_num = \
-                response.xpath('/html/body/div[2]/div/div/div[1]/div/div[2]/div[2]/div[1]/div[2]/text()').extract()[1]
+                response.xpath(
+                    '/html/body/div[2]/div/div/div[1]/div/div[2]/div[2]/div[1]/div[2]/text()').extract()[1]
         else:
             prd_num = "none"
         item['id'] = self.id_dict["长沙"] + prd_num
@@ -62,7 +64,8 @@ class ProductSpider(scrapy.Spider):
         item['schedule_days'] = re.findall("\\d+", item['product_name'][0])[0]
 
         # 产品类型
-        item['sr_team'] = re.findall("晚....", item['product_name'][0])[0][1:-1]  # [1:-1]是对去除晚和(
+        # [1:-1]是对去除晚和(
+        item['sr_team'] = re.findall("晚....", item['product_name'][0])[0][1:-1]
 
         # 这里有反爬虫机制
         item['score_s'] = '5'
@@ -75,14 +78,17 @@ class ProductSpider(scrapy.Spider):
 
         # 出售量
         if len(response.xpath('//span[@data-reactid="30"]/text()').extract()) > 0:
-            item['sales_volume'] = response.xpath('//span[@data-reactid="30"]/text()').extract()[0]
+            item['sales_volume'] = response.xpath(
+                '//span[@data-reactid="30"]/text()').extract()[0]
         else:
-            item['sales_volume'] = response.xpath('//span[@data-reactid="30"]/text()').extract()
+            item['sales_volume'] = response.xpath(
+                '//span[@data-reactid="30"]/text()').extract()
         # 供应商
         item['supplier'] = '00003'  # 携程供应商
         # 产品钻级
         if len(response.xpath('//h1/span/@class')) > 0:
-            item['product_grade'] = response.xpath('//h1/span/@class').extract()[0][-1]
+            item['product_grade'] = response.xpath(
+                '//h1/span/@class').extract()[0][-1]
         else:
             item['product_grade'] = "0"
         print('插入item进入数据库')
@@ -100,13 +106,17 @@ class ProductSpider(scrapy.Spider):
         #######################################################################################
         # 产品、出发城市、起价
         if len(response.xpath('//div[@class="from_city"]/text()').extract()) > 1:
-            the_city = response.xpath('//div[@class="from_city"]/text()').extract()[1]  # 当前页面出发城市
+            the_city = response.xpath(
+                '//div[@class="from_city"]/text()').extract()[1]  # 当前页面出发城市
         else:
-            the_city = response.xpath('//div[@class="prd_num"]/text()').extract()[1]
+            the_city = response.xpath(
+                '//div[@class="prd_num"]/text()').extract()[1]
         if len(response.xpath('//span[@class="total_price"]/em/text()').extract()) > 0:
-            the_price = response.xpath('//span[@class="total_price"]/em/text()').extract()[0]  # 当前页面出发城市起价
+            the_price = response.xpath(
+                '//span[@class="total_price"]/em/text()').extract()[0]  # 当前页面出发城市起价
         else:
-            the_price = response.xpath('//span[@class="total_price"]/em/text()').extract()
+            the_price = response.xpath(
+                '//span[@class="total_price"]/em/text()').extract()
         item2['id'] = self.count
         self.count += 1
         item2['product_id'] = item['id']
@@ -115,7 +125,8 @@ class ProductSpider(scrapy.Spider):
         print('插入item2到数据库')
         yield item2
 
-        from_city = response.xpath('//div[@class="city_price"]').re(r'<em>.*?</em>.*?</div>')
+        from_city = response.xpath(
+            '//div[@class="city_price"]').re(r'<em>.*?</em>.*?</div>')
         for city in from_city:
             res_city_pattern = r'<em>(.*?)</em>'
             res_price_pattern = r'</dfn>(.*?)</div>'

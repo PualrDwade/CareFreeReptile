@@ -22,7 +22,8 @@ class StrategySpider(scrapy.Spider):
             meta = {
                 'strategy_id': self.stratege_id_dict[url]
             }
-            yield scrapy.Request(url=url, callback=self.parse, meta=meta)  # 提交给parse处理
+            # 提交给parse处理
+            yield scrapy.Request(url=url, callback=self.parse, meta=meta)
 
     def parse(self, response):
         hotelpages = response.xpath('/html/body/div[2]/div/div[4]/ul/li')
@@ -31,13 +32,19 @@ class StrategySpider(scrapy.Spider):
             hotelitem = StrategyMsgItem()
             self.count += 1
             hotelitem['id'] = response.meta['strategy_id'] + str(self.count)
-            hotelitem['title'] = hotelpage.xpath('h2/a/text()').extract_first().strip()
-            hotelitem['link_url'] = self.base_url + hotelpage.xpath('h2/a/@href').extract_first().strip()
-            hotelitem['simple_content'] = ''.join(hotelpage.xpath('p[2]/text()').extract())
-            hotelitem['simple_content'] += ''.join(hotelpage.xpath('p[3]/text()').extract())
-            hotelitem['img_url'] = ('' + hotelpage.xpath('ul/li[1]/a[2]/img/@src').extract_first()).strip()
+            hotelitem['title'] = hotelpage.xpath(
+                'h2/a/text()').extract_first().strip()
+            hotelitem['link_url'] = self.base_url + \
+                hotelpage.xpath('h2/a/@href').extract_first().strip()
+            hotelitem['simple_content'] = ''.join(
+                hotelpage.xpath('p[2]/text()').extract())
+            hotelitem['simple_content'] += ''.join(
+                hotelpage.xpath('p[3]/text()').extract())
+            hotelitem['img_url'] = (
+                '' + hotelpage.xpath('ul/li[1]/a[2]/img/@src').extract_first()).strip()
             hotelitem['supplier'] = '00004'  # 去哪儿
-            hotelitem['scenic_name'] = ' '.join(hotelpage.xpath('p[3]/text()').extract()[2:]).strip()
+            hotelitem['scenic_name'] = ' '.join(
+                hotelpage.xpath('p[3]/text()').extract()[2:]).strip()
 
             # 存入数据库
             yield hotelitem

@@ -2,9 +2,9 @@
 
 import pymysql
 from . import settings
-
-
 # 门票信息爬取的数据库模块
+
+
 class TicketSpiderPipeline(object):
     """docstring for TicketsSpiderPipeline"""
 
@@ -26,7 +26,7 @@ class TicketSpiderPipeline(object):
         try:
             self.cursor.execute(
                 """insert into ProductDT_ticketsmsg(id,ticket_content,ticket_price,ticket_link,scenic_name,supplier_id_id,
-scense_address,city_id,img_url,score)
+                scense_address,city_id,img_url,score)
                 values (%s,%s,%s,%s,%s,%s,%s, %s, %s, %s)""",
                 (item['id'],
                  item['description'],
@@ -46,7 +46,6 @@ scense_address,city_id,img_url,score)
             # 出现错误时打印错误消息
             print(error)
         return item
-
 
 # 酒店信息爬取的数据库模块
 class HotelSpiderPipeline(object):
