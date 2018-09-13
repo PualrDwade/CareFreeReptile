@@ -70,7 +70,9 @@ ROBOTSTXT_OBEY = False
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'CarefreeReptile.pipelines.ProductSpiderPipeline': 400,
+    'CarefreeReptile.pipelines.Ctrip_productItemPipeline': 400,
+    'CarefreeReptile.pipelines.Ctrip_product_scenic_Item_Pipeline': 399,
+    'CarefreeReptile.pipelines.Ctrip_product_fromcity_price_Item_Pipeline': 398,
     'CarefreeReptile.pipelines.TicketSpiderPipeline': 300,
     'CarefreeReptile.pipelines.HotelSpiderPipeline': 200,
     'CarefreeReptile.pipelines.StrategyPipeline': 100

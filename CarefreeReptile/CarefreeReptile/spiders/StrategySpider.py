@@ -11,6 +11,7 @@ class StrategySpider(scrapy.Spider):
     }
     name = 'StrategySpider'
     count = 0
+    base_url = 'http://travel.qunar.com'
 
     # 设置爬取的开始链接
 
@@ -31,11 +32,12 @@ class StrategySpider(scrapy.Spider):
             self.count += 1
             hotelitem['id'] = response.meta['strategy_id'] + str(self.count)
             hotelitem['title'] = hotelpage.xpath('h2/a/text()').extract_first().strip()
-            hotelitem['link_url'] = hotelpage.xpath('h2/a/@href').extract_first().strip()
+            hotelitem['link_url'] = self.base_url + hotelpage.xpath('h2/a/@href').extract_first().strip()
             hotelitem['simple_content'] = ''.join(hotelpage.xpath('p[2]/text()').extract())
             hotelitem['simple_content'] += ''.join(hotelpage.xpath('p[3]/text()').extract())
-            hotelitem['img_url'] = hotelpage.xpath('a[2]/img/@src').extract_first()
-            hotelitem['supplier'] = '00004'#去哪儿
-            hotelitem['scenic_name'] = hotelpage.xpath('div[2]/div/div[3]/a/@href').extract_first().strip()
+            hotelitem['img_url'] = ('' + hotelpage.xpath('ul/li[1]/a[2]/img/@src').extract_first()).strip()
+            hotelitem['supplier'] = '00004'  # 去哪儿
+            hotelitem['scenic_name'] = ' '.join(hotelpage.xpath('p[3]/text()').extract()[2:]).strip()
+
             # 存入数据库
             yield hotelitem

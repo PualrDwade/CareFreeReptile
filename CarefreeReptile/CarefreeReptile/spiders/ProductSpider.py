@@ -2,7 +2,7 @@
 import re
 
 import scrapy
-from ..items import Ctrip_productItem
+from ..items import productItem
 
 
 class ProductSpider(scrapy.Spider):
@@ -35,7 +35,7 @@ class ProductSpider(scrapy.Spider):
 
     # 爬携程
     def product_parse(self, response):
-        item = Ctrip_productItem()
+        item = productItem()
 
         item['prd_url'] = self.list_urls[response.meta['num']]
         item['prd_img'] = "http:" + response.xpath(
