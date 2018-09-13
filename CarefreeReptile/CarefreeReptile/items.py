@@ -53,7 +53,7 @@ class StrategyMsgItem(scrapy.Item):
     scenic_name = scrapy.Field()
 
 
-# 携程的产品信息字段
+# 产品信息字段
 class productItem(scrapy.Item):
     product_name = scrapy.Field()  # 产品名字
     id = scrapy.Field()  # 产品id
@@ -70,13 +70,14 @@ class productItem(scrapy.Item):
 
 # 产品景点信息模块
 class product_scenic_Item(scrapy.Item):
+    id = scrapy.Field()  # 自增id,自动生成
     product_id = scrapy.Field()  # 产品ID
     scenic_name = scrapy.Field()  # 景点名字
 
 
 # 产品、出发城市、起价信息模块
-class product_fromcity_price_Item(scrapy.Item):
-    ID = scrapy.Field()  # 随机数
+class product_city_Item(scrapy.Item):
+    id = scrapy.Field()  # 自增,自动生成
     product_id = scrapy.Field()  # 产品ID
     city_id = scrapy.Field()  # 出发城市名字
     product_price = scrapy.Field()  # 起价

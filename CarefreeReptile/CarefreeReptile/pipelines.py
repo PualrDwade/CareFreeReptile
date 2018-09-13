@@ -158,19 +158,20 @@ class ProductSpiderPipeline(object):
              supplier_id, score, product_type, traver_days,comments_num, img_url, product_grade)
             values( % s, % s, % s, % s, % s, % s, % s, % s, % s, % s, % s)""",
                 (item['id'],
-                 item['name'],
-                 item['product_link'],
-                 item['sell_num'],
-                 item['supplier_id'],
-                 item['score'],
-                 item['product_type'],
-                 item['traver_days'],
+                 item['product_name'],
+                 item['prd_url'],
+                 item['sales_volume'],
+                 item['supplier'],
+                 item['score_s'],
+                 item['sr_team'],
+                 item['schedule_days'],
                  item['comments_num'],
-                 item['img_url'],
+                 item['prd_img'],
                  item['product_grade'],
                  )
             )
             # 插入完成提交sql语句
+            print('插入产品信息')
             self.connect.commit()
         except Exception as error:
             # 出现错误时打印错误消息
@@ -179,7 +180,7 @@ class ProductSpiderPipeline(object):
 
 
 # 产品景点
-class Ctrip_product_scenic_Item_Pipeline():
+class product_scenic_Item_Pipeline(object):
     def __init__(self):
         # 链接数据库
         self.connect = pymysql.connect(
@@ -196,12 +197,14 @@ class Ctrip_product_scenic_Item_Pipeline():
     def process_item(self, item, spider):
         try:
             self.cursor.execute(
-                """insert into ProductDT_product_senic(id, senic_name)
-            values ( % s, % s) """,
-                (item['id'],
+                """insert into ProductDT_product_senic(id, senic_name,product_id)
+            values ( % s, % s,% s) """,
+                (item['id'],  # 自增id
                  item['scenic_name'],
+                 item['product_id']
                  )
             )
+            print('插入产品景点')
             # 插入完成提交sql语句
             self.connect.commit()
         except Exception as error:
@@ -211,7 +214,7 @@ class Ctrip_product_scenic_Item_Pipeline():
 
 
 # 产品、出发城市、起价
-class Ctrip_product_fromcity_price_Item_Pipeline():
+class product_city_Item_Pipeline(object):
     def __init__(self):
         # 链接数据库
         self.connect = pymysql.connect(
@@ -228,10 +231,10 @@ class Ctrip_product_fromcity_price_Item_Pipeline():
     def process_item(self, item, spider):
         try:
             self.cursor.execute(
-                """insert into ProductDT_product_city(ID, id, city_id, product_price)
+                """insert into ProductDT_product_city(id,product_id,city_id, product_price)
             values ( % s, % s, % s, % s) """,
-                (item['ID'],
-                 item['id'],
+                (item['id'],
+                 item['product_id'],
                  item['city_id'],
                  item['product_price'],
                  )
