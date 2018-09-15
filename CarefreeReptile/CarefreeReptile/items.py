@@ -85,26 +85,26 @@ class product_city_Item(scrapy.Item):
 
 # 省份信息模块
 class ProvinceItem(scrapy.Item):
-    id = scrapy.Field()
-    name = scrapy.Field()
-    img_url = scrapy.Field()
+    province_id = scrapy.Field()
+    province_name = scrapy.Field()
+    province_img_url = scrapy.Field()
 
 
 # 城市信息模块
 class CityItem(scrapy.Item):
-    id = scrapy.Field()
-    name = scrapy.Field()
+    city_id = scrapy.Field()
+    city_name = scrapy.Field()
     provinceName = scrapy.Field()
-    img_url = scrapy.Field()
+    city_img_url = scrapy.Field()
 
 
 # 景点信息模块
 class ScenicItem(scrapy.Item):
-    id = scrapy.Field()
-    name = scrapy.Field()
+    scenic_id = scrapy.Field()
+    scenic_name = scrapy.Field()
     link_url = scrapy.Field()
     city_name = scrapy.Field()
     address = scrapy.Field()
     popular_level = scrapy.Field()
-    img_url = scrapy.Field()
+    scenic_img_url = scrapy.Field()
     basic_desc = scrapy.Field()

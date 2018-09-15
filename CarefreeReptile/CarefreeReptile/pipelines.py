@@ -347,9 +347,9 @@ class Province_Item_Pipeline():
             self.cursor.execute(
                 """insert into TraverMsg_provincemsg(id, name, img_url)
                 values (%s,%s,%s) """,
-                (item['id'],
-                 item['name'],
-                 item['img_url']
+                (item['province_id'],
+                 item['province_name'],
+                 item['province_img_url']
                 )
             )
             # 插入完成提交sql语句
@@ -380,10 +380,10 @@ class City_Item_Pipeline():
         try:
             self.cursor.execute(
                 """insert into TraverMsg_citymsg(id, name, img_url, province_name)
-                values (%s,%s,%s) """,
-                (item['id'],
-                 item['name'],
-                 item['img_url'],
+                values (%s,%s,%s,%s) """,
+                (item['city_id'],
+                 item['city_name'],
+                 item['city_img_url'],
                  item['provinceName']
                 )
             )
@@ -415,11 +415,11 @@ class Scenic_Item_Pipeline():
         try:
             self.cursor.execute(
                 """insert into TraverMsg_scenicmsg(id, name, city_name, img_url, address, basic_desc, link_url, popular_level)
-                values (%s,%s,%s) """,
-                (item['id'],
-                 item['name'],
+                values (%s,%s,%s,%s,%s,%s,%s,%s) """,
+                (item['scenic_id'],
+                 item['scenic_name'],
                  item['city_name'],
-                 item['img_url'],
+                 item['scenic_img_url'],
                  item['address'],
                  item['basic_desc'],
                  item['link_url'],
