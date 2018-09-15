@@ -24,7 +24,7 @@ MYSQL_PASSWD = 'chen981030'
 # USER_AGENT = 'CarefreeReptile (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 # CONCURRENT_REQUESTS = 32
@@ -70,11 +70,16 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'CarefreeReptile.pipelines.Ctrip_productItemPipeline': 400,
-    'CarefreeReptile.pipelines.Ctrip_product_scenic_Item_Pipeline': 399,
-    'CarefreeReptile.pipelines.Ctrip_product_fromcity_price_Item_Pipeline': 398,
-    'CarefreeReptile.pipelines.TicketSpiderPipeline': 300,
-    'CarefreeReptile.pipelines.HotelSpiderPipeline': 200,
+    # 'CarefreeReptile.pipelines.Ctrip_productItemPipeline': 400,  # 用来爬取产品关键信息
+    # 'CarefreeReptile.pipelines.product_scenic_Item_Pipeline': 399,  # 用来爬取关联信息
+    # #'CarefreeReptile.pipelines.product_city_Item_Pipeline': 398,
+    # 'CarefreeReptile.pipelines.TicketSpiderPipeline': 300,
+    # 'CarefreeReptile.pipelines.HotelSpiderPipeline': 200,
+    # 'CarefreeReptile.pipelines.StrategyPipeline': 100,
+    # 'CarefreeReptile.pipelines.CityJsonPipeline': 500
+    'CarefreeReptile.pipelines.Scenic_Item_Pipeline': 501,
+    'CarefreeReptile.pipelines.City_Item_Pipeline': 502,
+    'CarefreeReptile.pipelines.Province_Item_Pipeline': 503
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

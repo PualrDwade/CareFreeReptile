@@ -2,7 +2,7 @@
 import scrapy
 
 
-# 携程的酒店信息字段
+# 酒店信息字段
 class HotelMsgItem(scrapy.Item):
     # 酒店id
     id = scrapy.Field()
@@ -28,7 +28,7 @@ class HotelMsgItem(scrapy.Item):
     sell_num = scrapy.Field()
 
 
-
+# 门票信息字段
 class TicketItem(scrapy.Item):
     id = scrapy.Field()  # 门票ID
     name = scrapy.Field()  # 所属景点名称
@@ -42,8 +42,19 @@ class TicketItem(scrapy.Item):
     supplier = scrapy.Field()  # 供应商
 
 
-# 携程的产品信息字段
-class Ctrip_productItem(scrapy.Item):
+# 攻略链接字段
+class StrategyMsgItem(scrapy.Item):
+    id = scrapy.Field()
+    title = scrapy.Field()
+    link_url = scrapy.Field()
+    simple_content = scrapy.Field()
+    img_url = scrapy.Field()
+    supplier = scrapy.Field()
+    scenic_name = scrapy.Field()
+
+
+# 产品信息字段
+class productItem(scrapy.Item):
     product_name = scrapy.Field()  # 产品名字
     id = scrapy.Field()  # 产品id
     schedule_days = scrapy.Field()  # 产品行程天数
@@ -56,14 +67,44 @@ class Ctrip_productItem(scrapy.Item):
     prd_url = scrapy.Field()  # 产品链接
     prd_img = scrapy.Field()  # 产品图片
 
+
 # 产品景点信息模块
-class Ctrip_product_scenic_Item(scrapy.Item):
-    id = scrapy.Field()     # 产品ID
-    scenic_name = scrapy.Field()    # 景点名字
+class product_scenic_Item(scrapy.Item):
+    id = scrapy.Field()  # 自增id,自动生成
+    product_id = scrapy.Field()  # 产品ID
+    scenic_name = scrapy.Field()  # 景点名字
+
 
 # 产品、出发城市、起价信息模块
-class Ctrip_product_fromcity_price_Item(scrapy.Item):
-    ID = scrapy.Field()     # 随机数
-    id = scrapy.Field()     # 产品ID
+class product_city_Item(scrapy.Item):
+    id = scrapy.Field()  # 自增,自动生成
+    product_id = scrapy.Field()  # 产品ID
     city_id = scrapy.Field()  # 出发城市名字
-    product_price = scrapy.Field()          # 起价
+    product_price = scrapy.Field()  # 起价
+
+
+# 省份信息模块
+class ProvinceItem(scrapy.Item):
+    id = scrapy.Field()
+    name = scrapy.Field()
+    img_url = scrapy.Field()
+
+
+# 城市信息模块
+class CityItem(scrapy.Item):
+    id = scrapy.Field()
+    name = scrapy.Field()
+    provinceName = scrapy.Field()
+    img_url = scrapy.Field()
+
+
+# 景点信息模块
+class ScenicItem(scrapy.Item):
+    id = scrapy.Field()
+    name = scrapy.Field()
+    link_url = scrapy.Field()
+    city_name = scrapy.Field()
+    address = scrapy.Field()
+    popular_level = scrapy.Field()
+    img_url = scrapy.Field()
+    basic_desc = scrapy.Field()
