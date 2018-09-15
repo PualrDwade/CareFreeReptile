@@ -2,10 +2,13 @@
 import re
 
 import scrapy
+
 from ..items import productItem
 from ..items import product_scenic_Item
 from ..items import product_city_Item
 
+import time
+import random
 
 class ProductSpider(scrapy.Spider):
     name = 'ProductSpider'
@@ -24,9 +27,10 @@ class ProductSpider(scrapy.Spider):
     count = 0
 
     def start_requests(self):
-        urls = [self.product_dict['三亚']]
-        for url in urls:
-            yield scrapy.Request(url=url, callback=self.parse)
+        citys = ["长沙", "上海", "北京", "天津", "南京", "内蒙古", "广州", "厦门", "韶山", "南昌"]
+        for city in citys:
+            city_url = 'http://vacations.ctrip.com/grouptravel-206B64/?searchValue=' + city + '&searchText=' + city + '&from=do'
+            yield scrapy.Request(url=city_url, callback=self.parse)
 
     # 爬携程
     def parse(self, response):
@@ -40,6 +44,7 @@ class ProductSpider(scrapy.Spider):
 
     # 爬携程
     def product_parse(self, response):
+
         item = productItem()  # 创建一个item
         item1 = product_scenic_Item()
         item2 = product_city_Item()
@@ -91,6 +96,7 @@ class ProductSpider(scrapy.Spider):
                 '//h1/span/@class').extract()[0][-1]
         else:
             item['product_grade'] = "0"
+
         print('插入item进入数据库')
         print(item)
         yield item
@@ -104,44 +110,44 @@ class ProductSpider(scrapy.Spider):
         yield item1
 
         #######################################################################################
-        # 产品、出发城市、起价
-        if len(response.xpath('//div[@class="from_city"]/text()').extract()) > 1:
-            the_city = response.xpath(
-                '//div[@class="from_city"]/text()').extract()[1]  # 当前页面出发城市
-        else:
-            the_city = response.xpath(
-                '//div[@class="prd_num"]/text()').extract()[1]
-        if len(response.xpath('//span[@class="total_price"]/em/text()').extract()) > 0:
-            the_price = response.xpath(
-                '//span[@class="total_price"]/em/text()').extract()[0]  # 当前页面出发城市起价
-        else:
-            the_price = response.xpath(
-                '//span[@class="total_price"]/em/text()').extract()
-        item2['id'] = self.count
-        self.count += 1
-        item2['product_id'] = item['id']
-        item2['city_id'] = the_city
-        item2['product_price'] = the_price
-        print('插入item2到数据库')
-        yield item2
+        # # 产品、出发城市、起价
+        # if len(response.xpath('//div[@class="from_city"]/text()').extract()) > 1:
+        #     the_city = response.xpath(
+        #         '//div[@class="from_city"]/text()').extract()[1]  # 当前页面出发城市
+        # else:
+        #     the_city = response.xpath(
+        #         '//div[@class="prd_num"]/text()').extract()[1]
+        # if len(response.xpath('//span[@class="total_price"]/em/text()').extract()) > 0:
+        #     the_price = response.xpath(
+        #         '//span[@class="total_price"]/em/text()').extract()[0]  # 当前页面出发城市起价
+        # else:
+        #     the_price = response.xpath(
+        #         '//span[@class="total_price"]/em/text()').extract()
+        # item2['id'] = self.count
+        # self.count += 1
+        # item2['product_id'] = item['id']
+        # item2['city_id'] = the_city
+        # item2['product_price'] = the_price
+        # print('插入item2到数据库')
+        # yield item2
 
-        from_city = response.xpath(
-            '//div[@class="city_price"]').re(r'<em>.*?</em>.*?</div>')
-        for city in from_city:
-            res_city_pattern = r'<em>(.*?)</em>'
-            res_price_pattern = r'</dfn>(.*?)</div>'
-            from_city_name = re.findall(res_city_pattern, city, re.S | re.M)[0]
-            if len(re.findall(res_price_pattern, city, re.S | re.M)) != 0:
-                price = re.findall(res_price_pattern, city, re.S | re.M)[0]
-            else:
-                price = "实时计价"
-            item2['id'] = self.count
-            self.count += 1
-            item2['product_id'] = item['id']
-            item2['city_id'] = from_city_name
-            item2['product_price'] = price
-            item2
-            print('插入item2到数据库')
-            yield item2
+        # from_city = response.xpath(
+        #     '//div[@class="city_price"]').re(r'<em>.*?</em>.*?</div>')
+        # for city in from_city:
+        #     res_city_pattern = r'<em>(.*?)</em>'
+        #     res_price_pattern = r'</dfn>(.*?)</div>'
+        #     from_city_name = re.findall(res_city_pattern, city, re.S | re.M)[0]
+        #     if len(re.findall(res_price_pattern, city, re.S | re.M)) != 0:
+        #         price = re.findall(res_price_pattern, city, re.S | re.M)[0]
+        #     else:
+        #         price = "实时计价"
+        #     item2['id'] = self.count
+        #     self.count += 1
+        #     item2['product_id'] = item['id']
+        #     item2['city_id'] = from_city_name
+        #     item2['product_price'] = price
+        #     item2
+        #     print('插入item2到数据库')
+        #     yield item2
 
         print("-----------------------------------------------------------------------")
