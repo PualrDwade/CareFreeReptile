@@ -4,27 +4,16 @@ import scrapy
 
 # 酒店信息字段
 class HotelMsgItem(scrapy.Item):
-    # 酒店id
     id = scrapy.Field()
-    # 酒店名字
     name = scrapy.Field()
-    # 酒店评分
     score = scrapy.Field()
-    # 酒店价格(起价)
     hotel_price = scrapy.Field()
-    # 酒店简介(包括位置)
     hotel_content = scrapy.Field()
-    # 图片url(可以为空)
     img_url = scrapy.Field()
-    # 酒店链接(必须要有,直接跳转到对应商家的链接上去)
     hotel_link = scrapy.Field()
-    # 所属景点(可以为空)
-    scenic_id = scrapy.Field()
-    # 供应商(可以为空,具体看爬取的是哪个网站)
+    city_name = scrapy.Field()
     supplier_id = scrapy.Field()
-    # 最近动态
     latest_time = scrapy.Field()
-    # 人气
     sell_num = scrapy.Field()
 
 
@@ -52,6 +41,19 @@ class StrategyMsgItem(scrapy.Item):
     supplier = scrapy.Field()
     scenic_name = scrapy.Field()
 
+
+# 游记字段
+class TraverNoteMsgItem(scrapy.Item):
+    id = scrapy.Field()
+    title = scrapy.Field()
+    note_content = scrapy.Field()
+    star_num = scrapy.Field()
+    notify_status = scrapy.Field()
+    add_time = scrapy.Field()
+    img_url = scrapy.Field()
+    user_id = scrapy.Field()
+    city_id = scrapy.Field()
+    
 
 # 产品信息字段
 class productItem(scrapy.Item):
