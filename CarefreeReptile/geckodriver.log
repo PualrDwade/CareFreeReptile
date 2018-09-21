@@ -1,0 +1,98 @@
+1537263466472	geckodriver	INFO	geckodriver 0.21.0
+1537263466800	geckodriver	INFO	Listening on 127.0.0.1:64213
+1537263469815	mozrunner::runner	INFO	Running command: "D:\\非专业软件\\1\\firefox\\firefox.exe" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "C:\\Users\\廖智勇\\AppData\\Local\\Temp\\rust_mozprofile.MhxMjiUMC3Yf"
+*** You are running in headless mode.
+1537263483928	Marionette	INFO	Listening on port 64222
+1537263483990	Marionette	WARN	TLS certificate errors will be ignored for this session
+1537263484034	Marionette	DEBUG	[4294967297] Frame script loaded
+1537263484208	Marionette	DEBUG	[4294967297] Frame script registered
+1537263534887	Marionette	DEBUG	[4294967297] Received DOM event beforeunload for about:blank
+1537263535728	Marionette	DEBUG	[4294967297] Received DOM event pagehide for about:blank
+1537263537331	Marionette	DEBUG	[4294967297] Received DOM event DOMContentLoaded for http://vacations.ctrip.com/tour/detail/p19794910s206.html?kwd=%e5%87%a4%e5%87%b0
+JavaScript error: http://m.ctrip.com/restapi/soa2/12378/json/getGeneralConfigData?key=Holiday&callback=cQuery.jsonpCalendarFn, line 1: SyntaxError: expected expression, got '<'
+JavaScript warning: http://api.map.baidu.com/getscript?v=2.0&ak=eikVTDrvMvVnPldFlh44DWdUAKpq1xfL&services=&t=20180917142401, line 1: Error: WebGL warning: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: http://api.map.baidu.com/getscript?v=2.0&ak=eikVTDrvMvVnPldFlh44DWdUAKpq1xfL&services=&t=20180917142401, line 1: Error: WebGL warning: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: http://webresource.c-ctrip.com/resaresonline/risk/ubtrms/d.min.de4b6bfc.js, line 3: Error: WebGL warning: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: http://webresource.c-ctrip.com/resaresonline/risk/ubtrms/d.min.de4b6bfc.js, line 3: Error: WebGL warning: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: http://webresource.c-ctrip.com/resaresonline/risk/ubtrms/d.min.de4b6bfc.js, line 3: Error: WebGL warning: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: http://webresource.c-ctrip.com/resaresonline/risk/ubtrms/d.min.de4b6bfc.js, line 3: Error: WebGL warning: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: http://webresource.c-ctrip.com/resaresonline/risk/ubtrms/d.min.de4b6bfc.js, line 3: Error: WebGL warning: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: http://webresource.c-ctrip.com/resaresonline/risk/ubtrms/d.min.de4b6bfc.js, line 3: Error: WebGL warning: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+1537263547179	Marionette	DEBUG	[4294967297] Received observer notification outer-window-destroyed for 4294967303
+1537263549564	Marionette	DEBUG	[4294967297] Received DOM event pageshow for http://vacations.ctrip.com/tour/detail/p19794910s206.html?kwd=%e5%87%a4%e5%87%b0
+1537458337812	addons.productaddons	WARN	Failed downloading XML, status: 0, reason: error
+1537458339538	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1537458339539	addons.xpi	ERROR	Failed to download system add-on gmp-gmpopenh264: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458339617	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1537458339618	addons.xpi	ERROR	Failed to download system add-on gmp-widevinecdm: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458339620	addons.manager	WARN	Failed to update system addons: Error: Rejecting updated system add-on set that either could not be downloaded or contained unusable add-ons. (resource://gre/modules/addons/XPIInstall.jsm:3645:13) JS Stack trace: updateSystemAddons@XPIInstall.jsm:3645:13
+ddonChecker.jsm:314:16
+1537458337430	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1537458337431	addons.xpi	ERROR	Failed to download system add-on gmp-widevinecdm: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458337637	addons.manager	WARN	Failed to update system ad1537458338642	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1537458338642	addons.xpi	ERROR	Failed to download system add-on gmp-gmpopenh264: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458339004	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1537458339005	addons.xpi	ERROR	Failed to download system add-on gmp-widevinecdm: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458339008	addons.manager	WARN	Failed to update system addons: Error: Rejecting updated system add-on set that either could not be downloaded or contained unusable add-ons. (resource://gre/modules/addons/XPIInstall.jsm:3645:13) JS Stack trace: updateSystemAddons@XPIInstall.jsm:3645:13
+ddonChecker.jsm:314:16
+1537458334939	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1537458334940	addons.xpi	ERROR	Failed to download system add-on gmp-widevinecdm: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458334943	addons.manager	WARN	Failed to update system1537458334934	addons.xpi	ERROR	Failed to download system add-on gmp-gmpopenh264: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458335390	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1537458335390	addons.xpi	ERROR	Failed to download system add-on gmp-widevinecdm: Error: Failed downloading via XHR, status: 0, rea1537458336830	addons.productaddons	WARN	Failed downloading XML, status: 0, reason: error
+1537458339451	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1537458339452	addons.xpi	ERROR	Failed to download system add-on gmp-gmpopenh264: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458339491	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1537458339492	addons.xpi	ERROR	Failed to download system add-on gmp-widevinecdm: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458339496	addons.manager	WARN	Failed to update system addons: Error: Rejecting updated system add-on set that either could not be downloaded or contained unusable add-ons. (resource://gre/modules/addons/XPIInstall.jsm:3645:13) JS Stack trace: updateSystemAddons@XPIInstall.jsm:3645:13
+JavaScript error: resource://gre/modules/PushServiceWebSocket.jsm, line 309: NS_ERROR_NOT_CONNECTED: Component returned failure code: 0x804b000c (NS_ERROR_NOT_CONNECTED) [nsIWebSocketChannel.sendMsg]
+eason: error
+1537458336274	addons.xpi	ERROR	Failed to download system add-on gmp-widevinecdm: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458336276	addons.manager	WARN	Failed to update system addons: Error: Rejecting updated system add-on set that either could not be downloaded or contained unusa1537458337721	addons.productaddons	WARN	Failed downloading XML, status: 0, reason: error
+1537458339079	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1537458339080	addons.xpi	ERROR	Failed to download system add-on gmp-gmpopenh264: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458339301	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1537458339301	addons.xpi	ERROR	Failed to download system add-on gmp-widevinecdm: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458339303	addons.manager	WARN	Failed to update system addons: Error: Rejecting updated system add-on set that either could not be downloaded or contained unusable add-ons. (resource://gre/modules/addons/XPIInstall.jsm:3645:13) JS Stack trace: updateSystemAddons@XPIInstall.jsm:3645:13
+/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458336571	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1537458336571	addons.xpi	ERROR	Failed to download system add-on gmp-widevinecdm: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458336574	addons.manager	WARN	Failed to update system addons: Error: 1537458338212	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1537458338213	addons.xpi	ERROR	Failed to download system add-on gmp-gmpopenh264: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458338217	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1537458338218	addons.xpi	ERROR	Failed to download system add-on gmp-widevinecdm: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: 1537458339226	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1537458339228	addons.xpi	ERROR	Failed to download system add-on gmp-gmpopenh264: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458339380	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1537458339381	addons.xpi	ERROR	Failed to download system add-on gmp-widevinecdm: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458339383	addons.manager	WARN	Failed to update system addons: Error: Rejecting updated system add-on set that either could not be downloaded or contained unusable add-ons. (resource://gre/modules/addons/XPIInstall.jsm:3645:13) 1537458339415	addons.xpi	ERROR	Failed to download system add-on gmp-gmpopenh264: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458339551	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1537458339551	addons.xpi	ERROR	Failed to download system add-on gmp-widevinecdm: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458339553	addons.manager	WARN	Failed to update system addons: Error: Rejecting updated system add-on set that either could not be downloaded or contained unusable add-ons. (resource://gre/modules/addons/XPIInstall.jsm:3645:13) JS Stack trace: updateSystemAddons@XPIInstall.jsm:3645:13
+264: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458339395	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1537458339396	addons.xpi	ERROR	Failed to download system add-on gmp-widevinecdm: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458339433	addons.manager	WARN	Failed to update system addons: Error: Rejecting updated system add-on set that either co1537458339809	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1537458339810	addons.xpi	ERROR	Failed to download system add-on gmp-gmpopenh264: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458339822	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1537458339823	addons.xpi	ERROR	Failed to download system add-on gmp-widevinecdm: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458339826	addons.manager	WARN	Failed to update system addons: Error: Rejecting updated system add-on set that either could not be downloaded or contained unusable add-ons. (resource://gre/modules/addons/XPIInstall.jsm:3645:13) JS Stack trace: updateSystemAddons@XPIInstall.jsm:3645:13
+ddonChecker.jsm:314:16
+1537458339551	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1537458339551	addons.xpi	ERROR	Failed to download system add-on gmp-widevinecdm: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458339553	addons.manager	WARN	Failed to update system addons: Error: Rejecting updated system add-on set that either could not be downloaded or contained unusable add-ons. (resource://gre/modules/addons/XPIInstall.jsm:3645:13) JS Stack trace: updateSystemAddons@XPIInstall.jsm:3645:13
+ddonChecker.jsm:314:16
+1537458339210	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1537458339211	addons.xpi	ERROR	Failed to download system add-on gmp-widevinecdm: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458339212	addons.manager	WARN	Failed to update system addons: Error: Rejecting updated system add-on set that either could not be downloaded or contained unusable add-ons. (resource://gre/modules/addons/XPIInstall.jsm:3645:13) JS Stack trace: updateSystemAddons@XPIInstall.jsm:3645:13
+openh264: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458338491	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1537458338491	addons.xpi	ERROR	Failed to download system add-on gmp-widevinecdm: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458338493	addons.manager	WARN	Failed to update system addons: Error: Rejecting updated system add-on set that either could not be downloaded or contained unusable add-ons. (resource://gre/modules/addons/XPIInstall.jsm:3645:13) JS Stack trace: update1537458339145	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1537458339210	addons.xpi	ERROR	Failed to download system add-on gmp-gmpopenh264: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458339668	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+1537458339669	addons.xpi	ERROR	Failed to download system add-on gmp-widevinecdm: Error: Failed downloading via XHR, status: 0, reason: error (resource://gre/modules/addons/ProductAddonChecker.jsm:314:16) JS Stack trace: fail@ProductAddonChecker.jsm:314:16
+1537458339671	addons.manager	WARN	Failed to update system addons: Error: Rejecting updated system add-on set that either could not be downloaded or contained unusable add-ons. (resource://gre/modules/addons/XPIInstall.jsm:3645:13) JS Stack trace: updateSystemAddons@XPIInstall.jsm:3645:13

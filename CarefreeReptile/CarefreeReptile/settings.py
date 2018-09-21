@@ -72,14 +72,17 @@ ROBOTSTXT_OBEY = False
 ITEM_PIPELINES = {
     # 'CarefreeReptile.pipelines.Ctrip_productItemPipeline': 400,  # 用来爬取产品关键信息
     # 'CarefreeReptile.pipelines.product_scenic_Item_Pipeline': 399,  # 用来爬取关联信息
-    # #'CarefreeReptile.pipelines.product_city_Item_Pipeline': 398,
+    # 'CarefreeReptile.pipelines.product_city_Item_Pipeline': 398,
     # 'CarefreeReptile.pipelines.TicketSpiderPipeline': 300,
     # 'CarefreeReptile.pipelines.HotelSpiderPipeline': 200,
     # 'CarefreeReptile.pipelines.StrategyPipeline': 100,
     # 'CarefreeReptile.pipelines.CityJsonPipeline': 500
-    'CarefreeReptile.pipelines.Scenic_Item_Pipeline': 501,
-    'CarefreeReptile.pipelines.City_Item_Pipeline': 502,
-    'CarefreeReptile.pipelines.Province_Item_Pipeline': 503
+    
+    # 'CarefreeReptile.pipelines.Scenic_Item_Pipeline': 501,
+    # 'CarefreeReptile.pipelines.City_Item_Pipeline': 502,
+    # 'CarefreeReptile.pipelines.Province_Item_Pipeline': 503
+
+    'CarefreeReptile.pipelines.TraverNote_Item_Pipeline': 200
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
